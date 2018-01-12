@@ -1,0 +1,19 @@
+{
+    "name": "sysmoh/nextcloud-api-wrapper",
+    "description": "A simple wrapper around nextcloud user provisioning api",
+    "keywords": ["nextcloud", "api", "wrapper"],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Guillaume Hochet",
+            "email": "guillaume.hochet@gmail.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^6.3"
+    },
+    "autoload": {
+        "psr-4": {"NextcloudApiWrapper\\": "src/NextcloudApiWrapper"}
+    }
+}
