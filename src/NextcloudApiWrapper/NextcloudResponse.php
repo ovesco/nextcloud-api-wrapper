@@ -33,7 +33,7 @@ class NextcloudResponse
      */
     public function getStatus() {
 
-        return $this->body->meta->status;
+        return (string)$this->body->meta->status;
     }
 
     /**
