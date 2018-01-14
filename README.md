@@ -48,7 +48,7 @@ $guzzle     = $response->getRawResponse();  //Guzzle response
 If you'd like to perform your own requests, you can use the underlying
 nextcloud connection class to perform them.
 ```php
-$connection = new NextcloudClient($basePath, $username, $password);
+$connection = new \NextcloudApiWrapper\Connection($basePath, $username, $password);
 
 //To perform simple requests
 $response   = $connection->request('GET', 'cloud/users');
