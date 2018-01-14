@@ -4,9 +4,16 @@ namespace NextcloudApiWrapper;
 
 use GuzzleHttp\RequestOptions;
 use GuzzleHttp\Client;
+use Symfony\Component\OptionsResolver\Exception\InvalidOptionsException;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class NextcloudClient
+class Connection
 {
+    const GET           = 'GET';
+    const POST          = 'POST';
+    const PUT           = 'PUT';
+    const DELETE        = 'DELETE';
+
     /**
      * @var Client
      */
@@ -23,7 +30,7 @@ class NextcloudClient
     protected $password;
 
     /**
-     * @param string $basePath  The base path to nextcloud api, IE. 'http://nextcloud.mydomain.com/ocs/v1.php/cloud/'
+     * @param string $basePath  The base path to nextcloud api, IE. 'http://nextcloud.mydomain.com/ocs/'
      * @param string $username  The username of the user performing api calls
      * @param string $password  The password of the user performing api calls
      */
@@ -65,7 +72,8 @@ class NextcloudClient
     }
 
     /**
-     * Performs a request sending form data
+     * Performs a request sending form data.
+     * Required header automatically added by CURl
      * @param $verb
      * @param $path
      * @param array $formParams
@@ -86,6 +94,24 @@ class NextcloudClient
     public function buildUriParams(array $params = []) {
 
         return empty($items) ? '' : '?' . http_build_query($params);
+    }
+
+    /**
+     * @param array $params
+     * @param \Closure $function
+     * @return array
+     */
+    public function resolve(array $params, $function) {
+
+        $resolver   = new OptionsResolver();
+        $function($resolver);
+        return $resolver->resolve($params);
+    }
+
+    public function inArray($key, array $options) {
+
+        if(!in_array($key, $options))
+            throw new InvalidOptionsException("The key $key was not one of the following: " . implode(', ', $options));
     }
 
     /**
