@@ -1,4 +1,4 @@
-# Nextcloud Provisioning API wrapper for PHP
+# Nextcloud API wrapper for PHP
 
 This is a simple php wrapper around
 - [user provisioning api](https://docs.nextcloud.com/server/12/admin_manual/configuration_user/user_provisioning_api.html)
