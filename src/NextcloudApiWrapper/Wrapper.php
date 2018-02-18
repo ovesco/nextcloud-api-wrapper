@@ -9,6 +9,11 @@ class Wrapper
      */
     protected $connection;
 
+    /**
+     * @var AbstractClient
+     */
+    protected $clients  = [];
+
     private function __construct(Connection $connection)
     {
         $this->connection = $connection;
@@ -33,7 +38,7 @@ class Wrapper
      */
     public function getAppsClient() {
 
-        return new AppsClient($this->connection);
+        return $this->getClient(AppsClient::class);
     }
 
     /**
@@ -41,7 +46,7 @@ class Wrapper
      */
     public function getFederatedCloudSharesClient() {
 
-        return new FederatedCloudSharesClient($this->connection);
+        return $this->getClient(FederatedCloudSharesClient::class);
     }
 
     /**
@@ -49,7 +54,7 @@ class Wrapper
      */
     public function getGroupsClient() {
 
-        return new GroupsClient($this->connection);
+        return $this->getClient(GroupsClient::class);
     }
 
     /**
@@ -57,7 +62,7 @@ class Wrapper
      */
     public function getSharesClient() {
 
-        return new SharesClient($this->connection);
+        return $this->getClient(SharesClient::class);
     }
 
     /**
@@ -65,6 +70,18 @@ class Wrapper
      */
     public function getUsersClient() {
 
-        return new UsersClient($this->connection);
+        return $this->getClient(UsersClient::class);
+    }
+
+    /**
+     * @param $class
+     * @return mixed
+     */
+    protected function getClient($class) {
+
+        if(!isset($this->clients[$class]))
+            $this->clients[$class] = new $class($this->connection);
+
+        return $this->clients[$class];
     }
 }
