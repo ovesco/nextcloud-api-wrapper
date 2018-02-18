@@ -14,6 +14,12 @@ use of the api documentation for help on what params are available for each meth
 are not encoded and travel the internet as clearly as possible. Make sure
 to enforce it using SSL.
 
+## Installation
+Install it with composer
+```
+composer require sysmoh/nextcloud-api-wrapper
+```
+
 ## Basic usage
 The library depends on Guzzle to make requests and Symfony's options resolver.
 ```php
@@ -63,3 +69,6 @@ $response   = $connection->submitRequest('POST', 'cloud/users', [
     'password'  => 'tortilla'
 ]);
 ```
+
+### Licence
+**MIT**
