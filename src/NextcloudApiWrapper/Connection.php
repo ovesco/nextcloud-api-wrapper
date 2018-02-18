@@ -4,8 +4,6 @@ namespace NextcloudApiWrapper;
 
 use GuzzleHttp\RequestOptions;
 use GuzzleHttp\Client;
-use Symfony\Component\OptionsResolver\Exception\InvalidOptionsException;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class Connection
 {
@@ -94,24 +92,6 @@ class Connection
     public function buildUriParams(array $params = []) {
 
         return empty($items) ? '' : '?' . http_build_query($params);
-    }
-
-    /**
-     * @param array $params
-     * @param \Closure $function
-     * @return array
-     */
-    public function resolve(array $params, $function) {
-
-        $resolver   = new OptionsResolver();
-        $function($resolver);
-        return $resolver->resolve($params);
-    }
-
-    public function inArray($key, array $options) {
-
-        if(!in_array($key, $options))
-            throw new InvalidOptionsException("The key $key was not one of the following: " . implode(', ', $options));
     }
 
     /**

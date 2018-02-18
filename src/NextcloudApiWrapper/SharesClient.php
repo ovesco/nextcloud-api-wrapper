@@ -25,7 +25,7 @@ class SharesClient extends AbstractClient
      */
     public function getSharesFromFileOrFolder($path, array $params) {
 
-        $params = $this->connection->resolve($params, function(OptionsResolver $resolver) {
+        $params = $this->resolve($params, function(OptionsResolver $resolver) {
             $resolver->setDefaults([
                 'reshares',
                 'subfiles'
@@ -54,7 +54,7 @@ class SharesClient extends AbstractClient
      */
     public function createShare(array $params) {
 
-        $params = $this->connection->resolve($params, function(OptionsResolver $resolver) {
+        $params = $this->resolve($params, function(OptionsResolver $resolver) {
             $resolver->setRequired([
                 'path',
                 'shareType',
@@ -88,7 +88,7 @@ class SharesClient extends AbstractClient
      */
     public function updateShare($shareid, $key, $value) {
 
-        $this->connection->inArray($key, ['permissions', 'password', 'publicUpload', 'expireDate']);
+        $this->inArray($key, ['permissions', 'password', 'publicUpload', 'expireDate']);
 
         return $this->connection->pushDataRequest(Connection::PUT, self::SHARE_PART . '/' . $shareid, [
             $key => $value

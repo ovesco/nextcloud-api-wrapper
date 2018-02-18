@@ -29,7 +29,7 @@ class UsersClient extends AbstractClient
      */
     public function getUsers(array $params = []) {
 
-        $params = $this->connection->resolve($params, function(OptionsResolver $resolver) {
+        $params = $this->resolve($params, function(OptionsResolver $resolver) {
             $resolver->setDefaults([
                 'search',
                 'limit',
@@ -59,7 +59,7 @@ class UsersClient extends AbstractClient
      */
     public function editUser($username, $key, $value) {
 
-        $this->connection->inArray($key, [
+        $this->inArray($key, [
             'email',
             'quota',
             'displayname',
