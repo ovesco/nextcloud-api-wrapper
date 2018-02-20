@@ -37,6 +37,15 @@ class NextcloudResponse
     }
 
     /**
+     * Returns nextcloud message
+     * @return string
+     */
+    public function getMessage() {
+
+        return (isset($this->body->meta->message) ? (string)$this->body->meta->message : null);
+    }
+
+    /**
      * Returns nextcloud status code
      * @return int
      */
