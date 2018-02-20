@@ -42,7 +42,7 @@ class NextcloudResponse
      */
     public function getMessage() {
 
-        return (isset($this->body->meta->message) ? (string)$this->body->meta->message : '');
+        return (isset($this->body->meta->message) ? (string)$this->body->meta->message : null);
     }
 
     /**
