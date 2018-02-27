@@ -39,4 +39,14 @@ abstract class AbstractClient
         if(!in_array($key, $options))
             throw new InvalidOptionsException("The key $key was not one of the following: " . implode(', ', $options));
     }
+
+    /**
+     * Builds query params if some are provided
+     * @param array $params
+     * @return string
+     */
+    public function buildUriParams(array $params = []) {
+
+        return empty($params) ? '' : '?' . http_build_query($params);
+    }
 }

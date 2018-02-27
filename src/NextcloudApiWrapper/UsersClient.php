@@ -37,7 +37,7 @@ class UsersClient extends AbstractClient
             ]);
         });
 
-        return $this->connection->request(Connection::GET, self::USER_PART . $this->connection->buildUriParams($params));
+        return $this->connection->request(Connection::GET, self::USER_PART . $this->buildUriParams($params));
     }
 
     /**

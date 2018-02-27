@@ -13,7 +13,7 @@ class GroupsClient extends AbstractClient
      */
     public function searchGroups($search = '') {
 
-        return $this->connection->request(Connection::GET, self::GROUP_PART . $this->connection->buildUriParams([
+        return $this->connection->request(Connection::GET, self::GROUP_PART . $this->buildUriParams([
                 'search'    => $search
             ]));
     }

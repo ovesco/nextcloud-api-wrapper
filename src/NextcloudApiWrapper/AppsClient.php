@@ -13,7 +13,7 @@ class AppsClient extends AbstractClient
      */
     public function getApps($filter = null) {
 
-        return $this->connection->request(Connection::GET, self::APP_PART . $this->connection->buildUriParams([
+        return $this->connection->request(Connection::GET, self::APP_PART . $this->buildUriParams([
                 'filter'    => $filter
             ]));
     }

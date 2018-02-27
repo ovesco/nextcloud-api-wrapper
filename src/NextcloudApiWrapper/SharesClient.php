@@ -34,7 +34,7 @@ class SharesClient extends AbstractClient
 
         $params = array_merge($params, ['path' => $path]);
 
-        return $this->connection->request(Connection::GET, self::SHARE_PART . '/' . $this->connection->buildUriParams($params));
+        return $this->connection->request(Connection::GET, self::SHARE_PART . '/' . $this->buildUriParams($params));
     }
 
     /**

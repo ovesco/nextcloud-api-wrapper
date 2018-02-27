@@ -85,16 +85,6 @@ class Connection
     }
 
     /**
-     * Builds query params if some are provided
-     * @param array $params
-     * @return string
-     */
-    public function buildUriParams(array $params = []) {
-
-        return empty($items) ? '' : '?' . http_build_query($params);
-    }
-
-    /**
      * Returns the base request parameters required by nextcloud to
      * answer api calls
      * @return array
