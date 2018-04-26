@@ -4,10 +4,13 @@ This is a simple php wrapper around
 - [user provisioning api](https://docs.nextcloud.com/server/12/admin_manual/configuration_user/user_provisioning_api.html)
 - [shares api](https://docs.nextcloud.com/server/12/developer_manual/core/ocs-share-api.html)
 
-which allows you to manage your nextcloud instance dynamically. It was
-developed to be the closest possible to the API, every params is available
-and method names should be understandable enough, dont hesitate to make
-use of the api documentation for help on what params are available for each method.
+which allows you to manage your nextcloud instance dynamically. It's meant to 
+be the closest possible to the API, every parameter is available and method names should 
+be understandable enough, dont hesitate to make use of the api documentation 
+seeking help on what params are available for each method.
+
+This library was partially tested with nextcloud 12 and 13. It was developed to fit my needs but I implemented all
+remaining methods. If you find any bug, don't hesitate to open an issue.
 
 ##### Warning
 > Nextcloud API uses basic http auth, which means username and password
