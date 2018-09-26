@@ -57,12 +57,13 @@ class SharesClient extends AbstractClient
         $params = $this->resolve($params, function(OptionsResolver $resolver) {
             $resolver->setRequired([
                 'path',
-                'shareType',
-                'shareWith'
+                'shareType'
             ])->setDefaults([
+                'shareWith'     => null,
                 'publicUpload'  => null,
                 'password'      => null,
-                'permissions'   => null
+                'permissions'   => null,
+                'expireDate'    => null
             ]);
         });
 
