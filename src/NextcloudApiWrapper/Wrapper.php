@@ -14,7 +14,7 @@ class Wrapper
      */
     protected $clients  = [];
 
-    private function __construct(Connection $connection)
+    public function __construct(Connection $connection)
     {
         $this->connection = $connection;
     }
@@ -22,7 +22,7 @@ class Wrapper
     public static function build($baseUri, $username, $password) {
 
         $connection = new Connection($baseUri, $username, $password);
-        return new Wrapper($connection);
+        return new static($connection);
     }
 
     /**
