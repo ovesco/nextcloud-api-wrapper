@@ -20,7 +20,7 @@ to enforce it using SSL.
 ## Installation
 Install it with composer
 ```
-composer require sysmoh/nextcloud-api-wrapper
+composer require soetz/nextcloud-api-wrapper
 ```
 
 ## Basic usage
