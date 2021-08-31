@@ -20,21 +20,21 @@ class SharesClient extends AbstractClient
     /**
      * Get all shares from a given file/folder
      * @param $path
-     * @param array $params, can have keys 'reshares' (bool), 'subfiles' (bool)
+     * @param array $params, optional, can have keys 'reshares' (bool), 'subfiles' (bool)
      * @return NextcloudResponse
      */
-    public function getSharesFromFileOrFolder($path, array $params) {
+    public function getSharesFromFileOrFolder($path, array $params = []) {
 
         $params = $this->resolve($params, function(OptionsResolver $resolver) {
             $resolver->setDefaults([
-                'reshares',
-                'subfiles'
+                'reshares'	=> null,
+                'subfiles'	=> null
             ]);
         });
 
         $params = array_merge($params, ['path' => $path]);
 
-        return $this->connection->request(Connection::GET, self::SHARE_PART . '/' . $this->buildUriParams($params));
+        return $this->connection->request(Connection::GET, self::SHARE_PART . $this->buildUriParams($params));
     }
 
     /**
