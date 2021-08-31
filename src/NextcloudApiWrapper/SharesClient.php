@@ -34,7 +34,7 @@ class SharesClient extends AbstractClient
 
         $params = array_merge($params, ['path' => $path]);
 
-        return $this->connection->request(Connection::GET, self::SHARE_PART . $this->buildUriParams($params));
+        return $this->connection->pushDataRequest(Connection::GET, self::SHARE_PART . $this->buildUriParams($params));
     }
 
     /**
@@ -89,7 +89,7 @@ class SharesClient extends AbstractClient
      */
     public function updateShare($shareid, $key, $value) {
 
-        $this->inArray($key, ['permissions', 'password', 'publicUpload', 'expireDate']);
+        $this->inArray($key, ['permissions', 'password', 'publicUpload', 'expireDate', 'note']);
 
         return $this->connection->pushDataRequest(Connection::PUT, self::SHARE_PART . '/' . $shareid, [
             $key => $value
