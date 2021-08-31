@@ -27,8 +27,8 @@ class SharesClient extends AbstractClient
 
         $params = $this->resolve($params, function(OptionsResolver $resolver) {
             $resolver->setDefaults([
-                'reshares'	=> null,
-                'subfiles'	=> null
+                'reshares'  => null,
+                'subfiles'  => null
             ]);
         });
 
@@ -91,7 +91,7 @@ class SharesClient extends AbstractClient
 
         $this->inArray($key, ['permissions', 'password', 'publicUpload', 'expireDate', 'note']);
 
-        return $this->connection->pushDataRequest(Connection::PUT, self::SHARE_PART . '/' . $shareid, [
+        return $this->connection->submitRequest(Connection::PUT, self::SHARE_PART . '/' . $shareid, [
             $key => $value
         ]);
     }
