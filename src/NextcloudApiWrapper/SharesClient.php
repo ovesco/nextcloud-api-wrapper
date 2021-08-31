@@ -62,7 +62,8 @@ class SharesClient extends AbstractClient
             ])->setDefaults([
                 'publicUpload'  => null,
                 'password'      => null,
-                'permissions'   => null
+                'permissions'   => null,
+                'expireDate'    => null
             ]);
         });
 
